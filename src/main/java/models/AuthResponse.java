@@ -1,7 +1,5 @@
 package models;
 
-import java.util.List;
-
 public class AuthResponse {
     private boolean success;
     private String accessToken;

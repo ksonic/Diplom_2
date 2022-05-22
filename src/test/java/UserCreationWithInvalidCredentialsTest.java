@@ -25,14 +25,14 @@ public class UserCreationWithInvalidCredentialsTest {
 
     @ParameterizedTest
     @MethodSource("getUserData")
-    @DisplayName("Check that it's impossible to create the courier without email")
+    @DisplayName("Check that it's impossible to create the user without email,password or name")
     @Description("Basic test for /api/auth/user")
     public void UserCreationWithInvalidCredentialsTest(User user) {
         this.userClient=new UserClient();
 
         int statusCode=userClient.userCreate(user).extract().statusCode();
-        String message=userClient.userCreate(user).extract().path("message");
-        Boolean successMessage=userClient.userCreate(user).extract().path("success");
+        String message=userClient.userCreate(user).extract().path("message").toString();
+        Boolean successMessage=Boolean.parseBoolean(userClient.userCreate(user).extract().path("success").toString());
 
         assertThat("Статус ответа",statusCode,equalTo(403));
         assertThat("Статус регистрации",successMessage, equalTo(false) );

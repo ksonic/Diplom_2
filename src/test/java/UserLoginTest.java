@@ -34,7 +34,7 @@ public class UserLoginTest {
         ValidatableResponse validatableResponse=userClient.userLogin(user);
 
         int statusCode=validatableResponse.extract().statusCode();
-        Boolean successMessage=validatableResponse.extract().path("success");
+        Boolean successMessage=Boolean.parseBoolean(validatableResponse.extract().path("success").toString());
 
         assertThat("Статус запроса",statusCode, equalTo(200));
         assertThat("Статус регистрации",successMessage, equalTo(true) );

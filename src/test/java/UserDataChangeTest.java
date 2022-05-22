@@ -33,7 +33,7 @@ public class UserDataChangeTest {
         ValidatableResponse validatableResponse=userClient.userUpdate(user,UserGenerator.getUserWithAllCredentialsRandom());
 
         int statusCode=validatableResponse.extract().statusCode();
-        Boolean successMessage=validatableResponse.extract().path("success");
+        Boolean successMessage=Boolean.parseBoolean(validatableResponse.extract().path("success").toString());
 
         assertThat("Статус запроса",statusCode, equalTo(200));
         assertThat("Статус регистрации",successMessage, equalTo(true) );
@@ -46,7 +46,7 @@ public class UserDataChangeTest {
         ValidatableResponse validatableResponse=userClient.userUpdate(UserGenerator.getUserWithoutEmailRandom(),UserGenerator.getUserWithAllCredentialsRandom());
 
         int statusCode=validatableResponse.extract().statusCode();
-        Boolean successMessage=validatableResponse.extract().path("success");
+        Boolean successMessage=Boolean.parseBoolean(validatableResponse.extract().path("success").toString());
 
         assertThat("Статус запроса",statusCode, equalTo(401));
         assertThat("Статус регистрации",successMessage, equalTo(false) );

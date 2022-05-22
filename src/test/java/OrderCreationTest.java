@@ -4,12 +4,10 @@ import client.UserGenerator;
 import io.qameta.allure.Description;
 import io.restassured.response.ValidatableResponse;
 import models.User;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.testng.annotations.BeforeTest;
 
 import static client.OrderGenerator.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -33,13 +31,13 @@ public class OrderCreationTest {
     @Test
     @DisplayName("Check order creation without login")
     @Description("Basic test for api/orders")
-    public void orderCreateWithoutLoginTest() {
+    public void createOrderWithoutLoginTest() {
         OrderClient orderClient = new OrderClient();
 
         ValidatableResponse validatableResponse = orderClient.orderCreate(json);
 
         int statusCode = validatableResponse.extract().statusCode();
-        Boolean successMessage = validatableResponse.extract().path("success");
+        Boolean successMessage = Boolean.parseBoolean(validatableResponse.extract().path("success").toString());
 
         assertThat("Статус запроса", statusCode, equalTo(200));
         assertThat("Статус регистрации", successMessage, equalTo(true));
@@ -49,13 +47,13 @@ public class OrderCreationTest {
     @Test
     @DisplayName("Check order creation with login")
     @Description("Basic test for api/orders")
-    public void orderCreateWithLoginTest() {
+    public void createOrderWithLoginTest() {
         OrderClient orderClient = new OrderClient();
 
         ValidatableResponse orderResponse = orderClient.orderCreateWithLogin(json,user);
 
         int statusCode = orderResponse.extract().statusCode();
-        Boolean successMessage = orderResponse.extract().path("success");
+        Boolean successMessage = Boolean.parseBoolean(orderResponse.extract().path("success").toString());
 
         assertThat("Статус запроса", statusCode, equalTo(200));
         assertThat("Статус регистрации", successMessage, equalTo(true));
@@ -64,13 +62,13 @@ public class OrderCreationTest {
     @Test
     @DisplayName("Check order creation without ingredients")
     @Description("Basic test for api/orders")
-    public void orderCreateWithIngredientsTest() {
+    public void createOrderWithIngredientsTest() {
         OrderClient orderClient = new OrderClient();
         ValidatableResponse orderResponse = orderClient.orderCreate(jsonWithoutIngredients);
 
         int statusCode = orderResponse.extract().statusCode();
-        String message=orderResponse.extract().path("message");
-        Boolean successMessage = orderResponse.extract().path("success");
+        String message=orderResponse.extract().path("message").toString();
+        Boolean successMessage = Boolean.parseBoolean(orderResponse.extract().path("success").toString());
 
         assertThat("Статус запроса", statusCode, equalTo(400));
         assertThat("Статус заказа", successMessage, equalTo(false));
@@ -80,7 +78,7 @@ public class OrderCreationTest {
     @Test
     @DisplayName("Check order creation with invalid hash ingredients")
     @Description("Basic test for api/orders")
-    public void orderCreateWithInvalidIngredientsTest() {
+    public void createOrderWithInvalidIngredientsTest() {
         OrderClient orderClient = new OrderClient();
 
         ValidatableResponse orderResponse = orderClient.orderCreate(jsonInvalidIngredients);

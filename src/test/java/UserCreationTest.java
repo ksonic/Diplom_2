@@ -8,24 +8,21 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
-import static client.UserGenerator.getUserWithoutEmailRandom;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class UserCreationTest extends Settings {
-UserClient userClient;
-User user;
+    UserClient userClient;
+    User user;
 
     @BeforeEach
     public void setUp() {
-        this.userClient=new UserClient();
-        this.user= UserGenerator.getUserWithAllCredentialsRandom();
+        this.userClient = new UserClient();
+        this.user = UserGenerator.getUserWithAllCredentialsRandom();
 
     }
+
     @AfterEach
     public void tearDown() {
         userClient.userDelete(user);
@@ -36,14 +33,14 @@ User user;
     @Description("Basic test for /api/auth/user")
     public void userCreateTest() {
 
-       ValidatableResponse validatableResponse=userClient.userCreate(user);
+        ValidatableResponse validatableResponse = userClient.userCreate(user);
 
-        int statusCode=validatableResponse.extract().statusCode();
-        Boolean successMessage=validatableResponse.extract().path("success");
+        int statusCode = validatableResponse.extract().statusCode();
+        Boolean successMessage = Boolean.parseBoolean(validatableResponse.extract().path("success").toString());
 
 
-        assertThat("Статус запроса",statusCode, equalTo(200));
-        assertThat("Статус регистрации",successMessage, equalTo(true) );
+        assertThat("Статус запроса", statusCode, equalTo(200));
+        assertThat("Статус регистрации", successMessage, equalTo(true));
     }
 
     @Test
@@ -51,17 +48,16 @@ User user;
     @Description("Basic test for /api/auth/user")
     public void userExistedTest() {
 
-       userClient.userCreate(user);
+        userClient.userCreate(user);
 
-        int statusCode=userClient.userCreate(user).extract().statusCode();
-        String message=userClient.userCreate(user).extract().path("message");
-        Boolean successMessage=userClient.userCreate(user).extract().path("success");
+        int statusCode = userClient.userCreate(user).extract().statusCode();
+        String message = userClient.userCreate(user).extract().path("message").toString();
+        Boolean successMessage = Boolean.parseBoolean(userClient.userCreate(user).extract().path("success").toString());
 
-        assertThat("Статус ответа",statusCode,equalTo(403));
-        assertThat("Статус регистрации",successMessage, equalTo(false) );
-        assertThat("Сообщение", message,equalTo("User already exists") );
+        assertThat("Статус ответа", statusCode, equalTo(403));
+        assertThat("Статус регистрации", successMessage, equalTo(false));
+        assertThat("Сообщение", message, equalTo("User already exists"));
     }
-
 
 
 }

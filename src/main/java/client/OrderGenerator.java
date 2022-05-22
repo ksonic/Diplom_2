@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class OrderGenerator {
-    OrderClient orderClient=new OrderClient();
+   // OrderClient orderClient=new OrderClient();
     static IngredientClient ingredientClient=new IngredientClient();
 
     public static String json =String.format("{\n" +

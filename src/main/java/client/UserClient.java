@@ -1,5 +1,6 @@
 package client;
 
+import io.qameta.allure.Step;
 import io.restassured.http.Header;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
@@ -8,11 +9,11 @@ import models.User;
 
 import static client.Settings.getBaseSpec;
 import static io.restassured.RestAssured.given;
+import static client.Constants.USER_PATH;
 
 public class UserClient {
-    public static final String USER_PATH = "api/auth";
 
-    // Создание пользователя
+    @Step("User creation")
     public ValidatableResponse userCreate(User user) {
         ValidatableResponse userCreateResponse= given()
                 .spec(getBaseSpec())
@@ -23,8 +24,7 @@ public class UserClient {
         return userCreateResponse;
     }
 
-
-    // Логин пользователя
+    @Step("User login")
     public ValidatableResponse userLogin(User user) {
         ValidatableResponse userLoginResponse= given()
                 .spec(getBaseSpec())
@@ -35,10 +35,8 @@ public class UserClient {
         return userLoginResponse;
     }
 
-
-    // Изменение данных пользователя
+    @Step("User data change")
     public ValidatableResponse userUpdate(User user,User newData) {
-        // Отправляем запрос логина, что бы получить id
         Response responseLogin = given()
                 .spec(getBaseSpec())
                 .and()
@@ -56,10 +54,8 @@ public class UserClient {
         return userUpdateResponse;
     }
 
-    // Метод удаления пользователя
+    @Step("User delete")
     public void userDelete(User user) {
-
-        // Отправляем запрос логина, что бы получить id
         Response responseLogin = given()
                 .spec(getBaseSpec())
                 .and()
@@ -73,11 +69,9 @@ public class UserClient {
                 .spec(getBaseSpec())
                 .header(new Header("Authorization",authResponse.getAccessToken()))
                 .and()
-                //.body(responseLogin.getBody().print())
                 .delete(USER_PATH+"/user");
     }
-
-    // Метод получения данных пользователя по токену
+    @Step("Getting user data by the token")
     public Response userQuery(User user) {
         Response responseLogin = given()
                 .spec(getBaseSpec())

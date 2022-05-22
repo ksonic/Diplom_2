@@ -28,8 +28,8 @@ public class UserLoginWithInvalidCredentialsTest {
         this.userClient=new UserClient();
 
         int statusCode=userClient.userLogin(user).extract().statusCode();
-        String message=userClient.userLogin(user).extract().path("message");
-        Boolean successMessage=userClient.userLogin(user).extract().path("success");
+        String message=userClient.userLogin(user).extract().path("message").toString();
+        Boolean successMessage=Boolean.parseBoolean(userClient.userLogin(user).extract().path("success").toString());
 
         assertThat("Статус ответа",statusCode,equalTo(401));
         assertThat("Статус регистрации",successMessage, equalTo(false) );

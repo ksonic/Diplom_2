@@ -1,19 +1,6 @@
 package models;
 
-import io.restassured.response.ValidatableResponse;
-
 public class IngredientsData {
-  /*  public String _id;
-    public String name;
-    public String type;
-    public String proteins;
-    public String fat;
-    public String carbohydrates;
-    public String calories;
-    public String price;
-    public String image;
-    public String image_mobile;
-    public String image_large;*/
   public IngredientType type;
     public String name;
     public float price;

@@ -1,24 +1,20 @@
 package client;
 
+import io.qameta.allure.Step;
 import io.restassured.http.Header;
-import io.restassured.mapper.ObjectMapperType;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import models.AuthResponse;
 import models.User;
-import org.junit.jupiter.api.Test;
 
-import java.io.File;
-
-import static client.OrderGenerator.getIngredientsRandom;
 import static client.Settings.getBaseSpec;
-import static client.UserClient.USER_PATH;
+import static client.Constants.USER_PATH;
 import static io.restassured.RestAssured.given;
 
 public class OrderClient {
     private static final String ORDER_PATH = "api/orders";
 
-    // Создание заказа
+    @Step("Order creation")
     public ValidatableResponse orderCreate(String json) {
         ValidatableResponse userCreateResponse= given()
                 .spec(getBaseSpec())
@@ -29,9 +25,8 @@ public class OrderClient {
         return userCreateResponse;
     }
 
-    // Создание заказа с логином
+    @Step("Order creation with Login")
     public ValidatableResponse orderCreateWithLogin(String json,User user) {
-        // Отправляем запрос логина, что бы получить id
         Response responseLogin = given()
                 .spec(getBaseSpec())
                 .and()
@@ -49,7 +44,7 @@ public class OrderClient {
         return userCreateResponse;
     }
 
-    // Получение всех заказов конкретного пользователя
+    @Step("Getting orders of the current user")
     public ValidatableResponse getOrders(User user) {
         Response responseLogin = given()
                 .spec(getBaseSpec())
@@ -67,7 +62,7 @@ public class OrderClient {
         return getOrdersResponse;
     }
 
-    // Получение всех заказов конкретного пользователя без авторизации
+    @Step("Getting orders of the current user without authorization")
     public ValidatableResponse getOrdersWithoutLogin() {
         ValidatableResponse getOrdersResponse = given()
                 .spec(getBaseSpec())

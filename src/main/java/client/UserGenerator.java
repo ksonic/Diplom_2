@@ -8,22 +8,22 @@ public class UserGenerator {
 
 
     public static String getEmailRandom(){
-        String email="testsk4"+new Random().nextInt(50)+"@yandex.ru";
+        String email="sktest"+new Random().nextInt(50)+"@yandex.ru";
 
         return email;
     };
     public static User getUserWithAllCredentialsRandom(){
-        User user =new User(getEmailRandom(),"1234","testsk");
+        User user =new User(getEmailRandom(),"1234","sktest");
 
         return user;
     };
     public static User getUserWithoutEmailRandom(){
-        User user =new User("","1234","testsk");
+        User user =new User("","1234","sktest");
 
         return user;
     };
     public static User getUserWithoutPasswordRandom(){
-        User user =new User(getEmailRandom(),"","testsk");
+        User user =new User(getEmailRandom(),"","sktest");
 
         return user;
     };
