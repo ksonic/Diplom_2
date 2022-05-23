@@ -7,13 +7,12 @@ import io.restassured.response.ValidatableResponse;
 import models.AuthResponse;
 import models.User;
 
+import static client.Constants.ORDER_PATH;
 import static client.Settings.getBaseSpec;
 import static client.Constants.USER_PATH;
 import static io.restassured.RestAssured.given;
 
 public class OrderClient {
-    private static final String ORDER_PATH = "api/orders";
-
     @Step("Order creation")
     public ValidatableResponse orderCreate(String json) {
         ValidatableResponse userCreateResponse= given()
