@@ -1,0 +1,1 @@
+{"uuid":"cd31d452-ae3e-474e-b41d-74c03e8f05c7","name":"Check courier login with valid credentials","children":["5247a24c-8b5d-45e1-9b84-97f259599afa"],"befores":[],"afters":[{"name":"tearDown","status":"passed","stage":"finished","steps":[],"attachments":[],"parameters":[],"start":1652534089988,"stop":1652534090914}],"start":1652534085885,"stop":1652534091010}

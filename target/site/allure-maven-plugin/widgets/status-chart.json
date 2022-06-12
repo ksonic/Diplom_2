@@ -1,0 +1,161 @@
+[ {
+  "uid" : "4d56fbdf1510b955",
+  "name" : "Check user update with login",
+  "time" : {
+    "start" : 1653235077394,
+    "stop" : 1653235078958,
+    "duration" : 1564
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7538021b0450192f",
+  "name" : "Check user login [1] models.User@118c1faa",
+  "time" : {
+    "start" : 1653235073526,
+    "stop" : 1653235074732,
+    "duration" : 1206
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "3d10ecbdfaf34635",
+  "name" : "Check  creation of a user who is already registered",
+  "time" : {
+    "start" : 1653235081524,
+    "stop" : 1653235083415,
+    "duration" : 1891
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a6553ba879bd5636",
+  "name" : "Check courier login with valid credentials",
+  "time" : {
+    "start" : 1653235068645,
+    "stop" : 1653235073388,
+    "duration" : 4743
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "4435115ffd606c96",
+  "name" : "Check order creation with login",
+  "time" : {
+    "start" : 1653235089190,
+    "stop" : 1653235091503,
+    "duration" : 2313
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "63decd9525942cef",
+  "name" : "Check that it's impossible to create the user without email,password or name [1] models.User@4db10b9f",
+  "time" : {
+    "start" : 1653235078969,
+    "stop" : 1653235079859,
+    "duration" : 890
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "474d51819b3e913d",
+  "name" : "Check user update without login",
+  "time" : {
+    "start" : 1653235075846,
+    "stop" : 1653235077389,
+    "duration" : 1543
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "eeb6c8d612a47c87",
+  "name" : "Check getting order without login",
+  "time" : {
+    "start" : 1653235091511,
+    "stop" : 1653235092715,
+    "duration" : 1204
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6834eb62dccc4b4d",
+  "name" : "Check that it's impossible to create the user without email,password or name [3] models.User@34f3c920",
+  "time" : {
+    "start" : 1653235080720,
+    "stop" : 1653235081511,
+    "duration" : 791
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "93c6be9bc2438986",
+  "name" : "Check courier creation with valid input data",
+  "time" : {
+    "start" : 1653235083420,
+    "stop" : 1653235084541,
+    "duration" : 1121
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "cf13a373eb74db65",
+  "name" : "Check getting order with login",
+  "time" : {
+    "start" : 1653235092719,
+    "stop" : 1653235094474,
+    "duration" : 1755
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ea66855dabcd6585",
+  "name" : "Check order creation with invalid hash ingredients",
+  "time" : {
+    "start" : 1653235084551,
+    "stop" : 1653235086293,
+    "duration" : 1742
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7242b23dba1cae4d",
+  "name" : "Check order creation without login",
+  "time" : {
+    "start" : 1653235086299,
+    "stop" : 1653235087716,
+    "duration" : 1417
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b4ee3270617f31f4",
+  "name" : "Check user login [2] models.User@2512155e",
+  "time" : {
+    "start" : 1653235074738,
+    "stop" : 1653235075839,
+    "duration" : 1101
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a62579dd599575ef",
+  "name" : "Check order creation without ingredients",
+  "time" : {
+    "start" : 1653235087721,
+    "stop" : 1653235089183,
+    "duration" : 1462
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "c4a16f288e5aad74",
+  "name" : "Check that it's impossible to create the user without email,password or name [2] models.User@247877f3",
+  "time" : {
+    "start" : 1653235079866,
+    "stop" : 1653235080716,
+    "duration" : 850
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]
